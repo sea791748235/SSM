@@ -27,8 +27,6 @@ SpringMVC,Mybatis,Spring三大框架的整合总是很麻烦，在此提供一�
 
 效果图：
 
- ![alt text](https://github.com/shenzhanwang/SSM/blob/master/%E6%88%AA%E5%9B%BE/1.png)
- 
- ![alt text](https://github.com/shenzhanwang/SSM/blob/master/%E6%88%AA%E5%9B%BE/2.png)
+ ![输入图片说明](http://git.oschina.net/uploads/images/2016/1216/145410_018a9ca7_1110335.png "在这里输入图片标题")
 
-
+![输入图片说明](http://git.oschina.net/uploads/images/2016/1216/145422_c0a8f430_1110335.png "在这里输入图片标题")
