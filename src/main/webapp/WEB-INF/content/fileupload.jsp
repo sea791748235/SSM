@@ -51,8 +51,27 @@
   		<div class="col-md-12">
    <form id="upload" action="uploadfile" method="post" enctype="multipart/form-data">
         <div class="form-group">
-    		<label for="fileupload">fileupload</label>
+    		<label for="fileupload">单文件上传</label>
     		<input type="file" name="uploadfile" class="form-control" id="fileupload">
+  		</div>
+        <button type="submit"  class="btn btn-primary">upload</button>
+   </form>
+  	 </div>
+  	 </div>
+  	 <div class="row">
+  		<div class="col-md-12">
+   <form id="upload2" action="uploadfile2" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+    		<label for="fileupload">多文件上传</label>
+    		<input type="file" name="uploadfile" class="form-control" id="fileupload2">
+  		</div>
+  		<div class="form-group">
+    		<label for="fileupload">多文件上传</label>
+    		<input type="file" name="uploadfile" class="form-control" id="fileupload3">
+  		</div>
+  		<div class="form-group">
+    		<label for="fileupload">多文件上传</label>
+    		<input type="file" name="uploadfile" class="form-control" id="fileupload4">
   		</div>
         <button type="submit"  class="btn btn-primary">upload</button>
    </form>

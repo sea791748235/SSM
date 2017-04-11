@@ -22,22 +22,45 @@ public class FileUpload {
 @RequestMapping("/uploadfile")
 public String fileupload(@RequestParam MultipartFile uploadfile,HttpServletRequest request){
 	try{
-		MultipartFile file=uploadfile;
-		String filename=file.getOriginalFilename();
-		InputStream is=file.getInputStream();
-		if(!file.getContentType().equals("application/pdf"))
-			return "typeror";
-		if(file.getSize()>=2048000000)
-			return "filetoolarge";
+		String filename=uploadfile.getOriginalFilename();
 		String targetDir=request.getSession().getServletContext().getRealPath("uploadfiles");
 		File targetfile=new File(targetDir,filename);
-		FileOutputStream os=new FileOutputStream(targetfile);
-		IOUtils.copy(is, os);
-		is.close();
-		os.close();
+		uploadfile.transferTo(targetfile);
+//		InputStream is=file.getInputStream();
+//		if(!file.getContentType().equals("application/pdf"))
+//			return "typeror";
+//		FileOutputStream os=new FileOutputStream(targetfile);
+//		IOUtils.copy(is, os);
+//		is.close();
+//		os.close();
 	}catch(Exception e){
 		e.printStackTrace();
 	}
 	return "succ";
 }
+
+@RequestMapping("/uploadfile2")
+public String fileuploads(@RequestParam MultipartFile[] uploadfile,HttpServletRequest request){
+	try{
+		if(uploadfile!=null&&uploadfile.length>0){  
+            //循环获取file数组中得文件  
+            for(int i = 0;i<uploadfile.length;i++){  
+                MultipartFile file = uploadfile[i];  
+                if(file.getSize()==0){
+                	continue;
+                }
+                //保存文件  
+                String filename=file.getOriginalFilename();
+        		String targetDir=request.getSession().getServletContext().getRealPath("uploadfiles");
+        		File targetfile=new File(targetDir,filename);
+        		file.transferTo(targetfile);
+            }  
+        }  
+		
+	}catch(Exception e){
+		e.printStackTrace();
+	}
+	return "succ";
+}
+
 }
