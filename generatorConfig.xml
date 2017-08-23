@@ -10,7 +10,7 @@
     <jdbcConnection connectionURL="jdbc:sqlserver://10.6.179.99:1433;databaseName=pqms" driverClass="com.microsoft.sqlserver.jdbc.SQLServerDriver" password="123456789" userId="sa" />
     <javaModelGenerator targetPackage="po" targetProject="test" />
     <sqlMapGenerator targetPackage="mapper.xml" targetProject="test" />
-    <javaClientGenerator targetPackage="mapper" targetProject="test" type="XMLMAPPER" />
+    <javaClientGenerator targetPackage="mapper" targetProject="test" type="XMLMAPPER" /><!--ANNOTATEDMAPPER,XMLMAPPER-->
     <table tableName="project" domainObjectName="Project"  enableCountByExample="false" enableUpdateByExample="false"
      enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
     </table>
