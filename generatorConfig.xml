@@ -16,3 +16,4 @@
     </table>
   </context>
 </generatorConfiguration>
+<!--oracle处理date字段用String代替-->
