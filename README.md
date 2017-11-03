@@ -23,10 +23,12 @@ SpringMVC,Mybatis,Spring三大框架的整合总是很麻烦，在此提供一�
 
 10.要使用Struts2+hibernate+spring的整合，[点击这里进入](https://github.com/shenzhanwang/SSH_maven)  
 
+11.去掉所有JSP，使用HTML代替，有利于前后端分离。
+
 访问入口：http://localhost:8080/SSM/login
 
 效果图：
 
  ![输入图片说明](http://git.oschina.net/uploads/images/2016/1216/145410_018a9ca7_1110335.png "在这里输入图片标题")
 
-![输入图片说明](http://git.oschina.net/uploads/images/2016/1216/145422_c0a8f430_1110335.png "在这里输入图片标题")
+![输入图片说明](https://gitee.com/uploads/images/2017/1103/174138_49e9143e_1110335.png "QQ截图20171103174132.png")
