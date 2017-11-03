@@ -60,4 +60,11 @@ public class Login {
     {
         CaptchaUtil.outputCaptcha(request, response);
     }
+	
+	@RequestMapping("/current")
+	@ResponseBody
+	public MSG currentuser(HttpSession httpSession){
+		String username=(String)httpSession.getAttribute("username");
+		return new MSG(username);
+	}
   }
