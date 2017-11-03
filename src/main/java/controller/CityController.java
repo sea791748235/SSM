@@ -34,7 +34,7 @@ public class CityController {
 	
 	@RequestMapping("/country_city")
 	String city(){
-		return "city";
+		return "/html/city.html";
 	}
 	
 	@RequestMapping("/getchainacity")
@@ -53,7 +53,7 @@ public class CityController {
 	
 	@RequestMapping("/chinacity")
 	String get(){
-		return "country";
+		return "/html/country.html";
 	}
 	
 	

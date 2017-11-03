@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -54,20 +56,14 @@ public class ActorController {
 	
 	@RequestMapping("/showactor")
 	public String showactor(){
-		return "showactor";
+		return "/html/showactor.html";
 	}
 	
 	@RequestMapping(value="/updateactor",method = RequestMethod.POST)
-	public String updateactor(@RequestParam("id") short id,@RequestParam("first_name") String first_name,
-			@RequestParam("last_name") String last_name,@RequestParam("last_update") String last_update
-			){
-		Actor a=new Actor();
-		a.setFirst_name(first_name);
-		a.setId(id);
-		a.setLast_name(last_name);
-		a.setLast_update(last_update);
-		actorservice.updateactor(a);
-		return "showactor";
+	@ResponseBody
+	public Actor updateactor(@ModelAttribute Actor a){
+		Actor actor=actorservice.updateactor(a);
+		return actor;
 	}
 	
 	@RequestMapping(value="/getActorInfo")
@@ -77,22 +73,17 @@ public class ActorController {
 		return a;
 	}
 	
-	@RequestMapping("/addactor")
-	public String add(@RequestParam("first_name") String first_name,
-			@RequestParam("last_name") String last_name,@RequestParam("last_update") String last_update
-			){
-				Actor a=new Actor();
-				a.setFirst_name(first_name);
-				a.setLast_name(last_name);
-				a.setLast_update(last_update);
-				actorservice.addactor(a);
-				return "showactor";
+	@RequestMapping(value="/addactor",method = RequestMethod.POST)
+	@ResponseBody
+	public Actor add(@ModelAttribute Actor a){
+		Actor actor=actorservice.addactor(a);
+		return actor;
 	}
 	
 	@RequestMapping(value="/deleteactor")
 	public String delete(@RequestParam("id") short id){
 		actorservice.delete(id);
-		return "showactor";
+		return "/html/showactor.html";
 	}
 	
 	@RequestMapping("/exportactor")

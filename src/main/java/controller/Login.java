@@ -1,43 +1,63 @@
 package controller;
 
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import pagemodel.User;
 import service.LoginService;
-
+import web.CaptchaUtil;
+import pagemodel.MSG;
 
 @Controller
 public class Login {
 	@Autowired
 	LoginService loginservice;
 	
-	@RequestMapping("/loginvalidate")
-	public String loginvalidate(@RequestParam("username") String username,@RequestParam("pic") String pic,@RequestParam("password") String pwd,HttpSession httpSession){
+	@RequestMapping(value="/loginvalidate",method = RequestMethod.POST)
+	@ResponseBody
+	public MSG loginvalidate(@ModelAttribute User u,HttpSession httpSession){
 		String picode=(String) httpSession.getAttribute("rand");
-		if(!picode.equalsIgnoreCase(pic))
-			return "failcode";
-		if(username==null)
-			return "login";
-		String realpwd=loginservice.getpwdbyname(username);
-		if(realpwd!=null&&pwd.equals(realpwd))
+		if(!picode.equalsIgnoreCase(u.getPic()))
+			return new MSG("error code");
+		if(u.getUsername()==null)
+			return new MSG("username is null");
+		String realpwd=loginservice.getpwdbyname(u.getUsername());
+		if(realpwd!=null&&realpwd.equals(u.getPassword()))
 		{
-			httpSession.setAttribute("username", username);
-			return "showactor";
+			httpSession.setAttribute("username", u.getUsername());
+			return new MSG("success");
 		}else
-			return "fail";
+			return new MSG("error password");
 	}
 	
 	@RequestMapping("/login")
 	public String login(){
-		return "login";
+		return "/html/login.html";
 	}
 	
 	@RequestMapping("/logout")
 	public String logout(HttpSession httpSession){
 		httpSession.removeAttribute("username");
-		return "login";
+		return "/html/login.html";
 	}
+	
+	@RequestMapping(value = "/captcha", method = RequestMethod.GET)
+    @ResponseBody
+    public void captcha(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException 
+    {
+        CaptchaUtil.outputCaptcha(request, response);
+    }
   }

@@ -28,8 +28,9 @@ public class ActorServiceImpl implements ActorService{
 		return a;
 	}
 
-	public void updateactor(Actor a) {
+	public Actor updateactor(Actor a) {
 		actorMapper.updateActorbyid(a);
+		return a;
 	}
 
 	public List<Actor> getpageActors(int pagenum, int pagesize) {
@@ -43,8 +44,9 @@ public class ActorServiceImpl implements ActorService{
 		return l.size();
 	}
 
-	public void addactor(Actor a) {
+	public Actor addactor(Actor a) {
 		actorMapper.insertActor(a);
+		return a;
 	}
 
 	public void delete(short id) {
