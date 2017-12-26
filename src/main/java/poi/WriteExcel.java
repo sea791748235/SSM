@@ -211,4 +211,5 @@ public class WriteExcel {
 			WriteExcel ex = new WriteExcel(rowsName, dataList);  
 			ex.export();  
 		}
+		//往合并单元格写入数据，实际上是往合并单元格左上角的格子写入数据
 }
