@@ -213,8 +213,8 @@ public class WriteExcel {
 
 
 			//往合并单元格写入数据，实际上是往合并单元格左上角的格子写入数据
-			XSSFWorkbook wb=new XSSFWorkbook();
-			XSSFCellStyle style=wb.createCellStyle();
+			HSSFWorkbook wb=new HSSFWorkbook();
+			HSSFCellStyle style=wb.createCellStyle();
 			style.setAlignment(XSSFCellStyle.ALIGN_CENTER);
 			Sheet sheet =wb.createSheet();
 			sheet.addMergedRegion(new CellRangeAddress(0, 0, 2, 4)); 
