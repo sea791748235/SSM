@@ -7,6 +7,8 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.IOUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -24,12 +26,16 @@ import service.ActorService;
 
 @Controller
 public class ActorController {
+	private static Logger log = LogManager.getLogger(ActorController.class.getName());
+	
 	@Autowired
 	private ActorService actorservice;
 	
 	@RequestMapping(value="/actorlist",produces = {"application/json;charset=UTF-8"})
 	@ResponseBody
 	public ActorGrid getactorlist(@RequestParam("current") int current,@RequestParam("rowCount") int rowCount){
+		log.info("aaa");
+		log.error("bbb");
 		int total=actorservice.getactornum();
 		List<Actor> list=actorservice.getpageActors(current,rowCount);
 		ActorGrid grid=new ActorGrid();
