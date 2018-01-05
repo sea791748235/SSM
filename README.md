@@ -23,7 +23,9 @@ SpringMVC,Mybatis,Spring三大框架的整合总是很麻烦，在此提供一�
 
 10.要使用Struts2+hibernate+spring的整合，[点击这里进入](https://github.com/shenzhanwang/SSH_maven)  
 
-11.去掉所有JSP，使用HTML代替，有利于前后端分离。
+11.去掉所有JSP，使用HTML代替，有利于前后端分离;
+
+12.整合日志工具log4j2，较log4j1.x有较大性能提升，支持日志文件输出和控制台输出。
 
 访问入口：http://localhost:8080/SSM/login
 
