@@ -31,5 +31,10 @@ public class Actor {
 	public void setLast_update(String last_update) {
 		this.last_update = last_update;
 	}
+	@Override
+	public String toString() {
+		return "Actor [id=" + id + ", first_name=" + first_name + ", last_name=" + last_name + ", last_update="
+				+ last_update + "]";
+	}
 	
 }

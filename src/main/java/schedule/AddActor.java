@@ -2,6 +2,7 @@ package schedule;
 
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.quartz.QuartzJobBean;
 
 import po.Actor;
@@ -26,7 +27,9 @@ public class AddActor extends QuartzJobBean{
 				Actor a=new Actor();
 				a.setFirst_name("AUTO");
 				a.setLast_name("hehe");
-				a.setLast_update("2011-1-1");
+				a.setLast_update("2018-1-1");
+				System.out.println(a.toString());
+				System.out.println(actorservice);
 				actorservice.addactor(a);
 		}
 
