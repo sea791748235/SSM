@@ -4,15 +4,15 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
 import java.io.IOException;
 import java.util.Random;
 
+import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.sun.image.codec.jpeg.JPEGCodec;
-import com.sun.image.codec.jpeg.JPEGImageEncoder;
 
 public class CaptchaUtil {
 	private CaptchaUtil(){}
@@ -87,10 +87,14 @@ public class CaptchaUtil {
         {
             g.drawRect(random.nextInt(width), random.nextInt(height), 1, 1);
         }
-        // 转成JPEG格式
-        ServletOutputStream out = response.getOutputStream();
-        JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(out);
-        encoder.encode(bi);
-        out.flush();
+       
+        try {
+            ServletOutputStream out = response.getOutputStream();
+            ImageIO.write((RenderedImage) bi, "jpeg", out);
+            out.close();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 }

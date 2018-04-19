@@ -28,8 +28,6 @@ public class AddActor extends QuartzJobBean{
 				a.setFirst_name("AUTO");
 				a.setLast_name("hehe");
 				a.setLast_update("2018-1-1");
-				System.out.println(a.toString());
-				System.out.println(actorservice);
 				actorservice.addactor(a);
 		}
 
