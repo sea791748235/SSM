@@ -27,7 +27,7 @@ SpringMVC,Mybatis,Spring三大框架的整合总是很麻烦，在此提供一�
 
 12.整合日志工具log4j2，较log4j1.x有较大性能提升，支持日志文件输出和控制台输出；
 
-13. 整合接口文档swagger2.4，入口http://localhost:8081/SSM/swagger-ui.html
+13. 整合接口文档swagger2.4，入口http://localhost:8080/SSM/swagger-ui.html
 
 
 访问入口：http://localhost:8080/SSM/login
@@ -37,6 +37,10 @@ SpringMVC,Mybatis,Spring三大框架的整合总是很麻烦，在此提供一�
  ![输入图片说明](http://git.oschina.net/uploads/images/2016/1216/145410_018a9ca7_1110335.png "在这里输入图片标题")
 
 ![输入图片说明](https://gitee.com/uploads/images/2017/1103/174138_49e9143e_1110335.png "QQ截图20171103174132.png")
+
+![输入图片说明](https://gitee.com/uploads/images/2018/0427/191550_c71b959c_1110335.png "QQ截图20180427190522.png")
+
+![输入图片说明](https://gitee.com/uploads/images/2018/0427/191600_16979257_1110335.png "QQ截图20180427191120.png")
 
 ### 附录：个人作品索引目录（持续更新）
 
