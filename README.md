@@ -3,7 +3,7 @@ SpringMVC,Mybatis,Spring三大框架的整合总是很麻烦，在此提供一�
 
 其中包含的内容如下：
 
-1.SpringMVC4.0.4,Mybatis3.2.2,Spring4.0.4三大框架的整合；
+1.SpringMVC4.0.4,Mybatis3.2.2,Spring4.3.16三大框架的整合；
 
 2.前端框架集成了Bootstrap3.3.5，Jquery1.12.3,集成了Bootstrap插件Bootgrid数据表格实现分页，使用Bootstrap的datetimepicker插件实现日期时间选择，后台的分页使用Mybatis的插件pagehelper实现；
 
