@@ -67,7 +67,10 @@
 $(document).ready(function(){
     var grid =$("#grid-data").bootgrid({
     ajax:true,
-    url:"getchainacity",
+    url:"citys/china",
+    ajaxSettings: {
+        method: "GET",
+    },
      formatters: {
         "commands": function(column, row)
         {

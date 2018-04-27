@@ -12,7 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import pagemodel.User;
@@ -42,12 +41,12 @@ public class Login {
 			return new MSG("error password");
 	}
 	
-	@RequestMapping("/login")
+	@RequestMapping(value="/login",method = RequestMethod.GET)
 	public String login(){
 		return "/html/login.html";
 	}
 	
-	@RequestMapping("/logout")
+	@RequestMapping(value="/logout",method = RequestMethod.GET)
 	public String logout(HttpSession httpSession){
 		httpSession.removeAttribute("username");
 		return "/html/login.html";
@@ -61,7 +60,7 @@ public class Login {
         CaptchaUtil.outputCaptcha(request, response);
     }
 	
-	@RequestMapping("/current")
+	@RequestMapping(value="/current",method = RequestMethod.GET)
 	@ResponseBody
 	public MSG currentuser(HttpSession httpSession){
 		String username=(String)httpSession.getAttribute("username");

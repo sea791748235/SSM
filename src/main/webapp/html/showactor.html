@@ -59,8 +59,8 @@
 		    查看接口数据 <span class="caret"></span>
 		  </button>
 		  <ul class="dropdown-menu">
-		    <li><a href="/SSM/actorlistxml?current=1&rowCount=10" target="_blank">XML</a></li>
-		    <li><a href="/SSM/actorlist?current=1&rowCount=10" target="_blank">JSON</a></li>
+		    <li><a href="/SSM/listActorsXml?current=1&rowCount=10" target="_blank">XML</a></li>
+		    <li><a href="/SSM/actors?current=1&rowCount=10" target="_blank">JSON</a></li>
 		  </ul>
 		</div>
   		<table id="grid-data" class="table table-condensed table-hover table-striped">
@@ -84,7 +84,10 @@
 $(document).ready(function(){
     var grid =$("#grid-data").bootgrid({
     ajax:true,
-    url:"actorlist",
+    url:"actors",
+    ajaxSettings: {
+        method: "GET",
+    },
         formatters: {
         "commands": function(column, row)
         {
@@ -97,8 +100,7 @@ $(document).ready(function(){
 	    grid.find(".command-edit").on("click", function(e)
 	    {
 	        $(".actormodal").modal();
-	        $.post("getActorInfo",{id:$(this).data("row-id")},function(str){
-	        	//var data=JSON.parse(str);
+	        $.get("actors/"+$(this).data("row-id"),function(str){
 	        	$("#fname").val(str.first_name);
 	        	$("#lname").val(str.last_name);
 	        	$("#lupdate").val(str.last_update);
@@ -201,18 +203,41 @@ $(document).ready(function(){
 <script>
  $(document).ready(function(){
  	$("#update").click(function(){
- 		$.post("updateactor",$("#form1").serialize(),function(a){
- 			$(".actormodal").modal('hide');
- 			alert("更新成功");
- 			location.reload();
- 		});
+ 		var json={"id":$("#actorid").val(),"first_name":$("#fname").val(),"last_name":$("#lname").val(),"last_update":$("#lupdate").val()};
+			$.ajax({
+		        url:"actors/"+$("#actorid").val(),
+		        type:"PUT",
+		        data:JSON.stringify(json),
+		        dataType: 'json',  
+            	contentType:'application/json;charset=UTF-8', //contentType很重要     
+		        success: function(data) {
+			        $(".actormodal").modal('hide');
+		 			alert("更新成功");
+		 			location.reload();
+			    }      
+		});
+ 		
  	});
  	$("#addactor").click(function(){
- 		$.post("addactor",$("#form2").serialize(),function(a){
+ 		$.post("actors",$("#form2").serialize(),function(a){
  			$(".addmodal").modal('hide');
  			alert("添加成功");
  			location.reload();
  		});
+ 		var json={"first_name":$("#fname2").val(),"last_name":$("#lname2").val(),"last_update":$("#lupdate2").val()};
+			$.ajax({
+		        url:"actors",
+		        type:"POST",
+		        data:JSON.stringify(json),
+		        dataType: 'json',  
+            	contentType:'application/json;charset=UTF-8', //contentType很重要     
+		        success: function(data) {
+			        $(".addmodal").modal('hide');
+		 			alert("添加成功");
+		 			location.reload();
+			    }      
+ 		});	
+ 		
  	});	
  
  });

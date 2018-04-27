@@ -71,7 +71,10 @@
 $(document).ready(function(){
     var grid =$("#grid-data").bootgrid({
     ajax:true,
-    url:"getcitys",
+    ajaxSettings: {
+        method: "GET",
+    },
+    url:"citys",
         formatters: {
         "commands": function(column, row)
         {

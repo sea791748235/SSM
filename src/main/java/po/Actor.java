@@ -1,10 +1,17 @@
 package po;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
+@ApiModel("演员表")
 public class Actor {
+	@ApiModelProperty("主键")
 	private short id;
+	@ApiModelProperty("名字")
 	private String first_name;
+	@ApiModelProperty("姓氏")
 	private String last_name;
+	@ApiModelProperty("最后更新日期")
 	private String last_update;
 	
 	public short getId() {
