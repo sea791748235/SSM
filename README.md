@@ -13,7 +13,7 @@ SpringMVC,Mybatis,Spring三大框架的整合总是很麻烦，在此提供一�
 
 5.集成了作业自动调度框架Quartz 2.2.2实现作业调度；
 
-6.json插件使用阿里的开源fastjson工具；
+6.json插件使用阿里的开源fastjson工具,注意低版本的fastjson与swagger不兼容，这里有坑；
 
 7.包含了一个文件上传的功能；
 
@@ -25,7 +25,10 @@ SpringMVC,Mybatis,Spring三大框架的整合总是很麻烦，在此提供一�
 
 11.去掉所有JSP，使用HTML代替，有利于前后端分离;
 
-12.整合日志工具log4j2，较log4j1.x有较大性能提升，支持日志文件输出和控制台输出。
+12.整合日志工具log4j2，较log4j1.x有较大性能提升，支持日志文件输出和控制台输出；
+
+13. 整合接口文档swagger2.4，入口http://localhost:8081/SSM/swagger-ui.html
+
 
 访问入口：http://localhost:8080/SSM/login
 
