@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import pagemodel.ActorGrid;
+import pagemodel.MSG;
 import po.Actor;
 import service.ActorService;
 
@@ -79,9 +80,9 @@ public class ActorController {
 	@ApiOperation("获取一个演员")
 	@RequestMapping(value="/actors/{id}",method = RequestMethod.GET)
 	@ResponseBody
-	public Actor getactorbyid(@PathVariable("id") short id){
+	public MSG getactorbyid(@PathVariable("id") short id){
 		Actor a=actorservice.getActorByid(id);
-		return a;
+		return new MSG("200",a);
 	}
 	
 	@ApiOperation("添加一个演员")

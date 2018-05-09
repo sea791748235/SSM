@@ -101,10 +101,10 @@ $(document).ready(function(){
 	    {
 	        $(".actormodal").modal();
 	        $.get("actors/"+$(this).data("row-id"),function(str){
-	        	$("#fname").val(str.first_name);
-	        	$("#lname").val(str.last_name);
-	        	$("#lupdate").val(str.last_update);
-	        	$("#actorid").val(str.id);
+	        	$("#fname").val(str.obj.first_name);
+	        	$("#lname").val(str.obj.last_name);
+	        	$("#lupdate").val(str.obj.last_update);
+	        	$("#actorid").val(str.obj.id);
 	        });
 	    }).end().find(".command-delete").on("click", function(e)
 		    {

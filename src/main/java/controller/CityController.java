@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import pagemodel.CityGrid;
+import pagemodel.MSG;
 import po.City;
 import po.Country;
 import service.CityService;
@@ -58,9 +59,9 @@ public class CityController {
 	
 	@RequestMapping(value="/countrycity",method = RequestMethod.GET)
 	@ResponseBody
-	Country getcountrycity(@RequestParam("country")String country){
+	MSG getcountrycity(@RequestParam("country")String country){
 		Country a=cityservice.getCountryCitys(country);
-		return a;
+		return new MSG("200",a);
 	}
 	
 }
