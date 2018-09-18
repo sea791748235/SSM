@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <script src="./js/jquery-1.12.3.min.js"></script>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/jquery.bootgrid.min.css">
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/jquery.bootgrid.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.js"></script>
+
+    <!-- Latest compiled and minified Locales -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/locale/bootstrap-table-zh-CN.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div>
+        <table id="fileTable" class="table table-condensed table-hover table-striped">
+        </table>
+    </div>
+
+</div>
+
+<script>
+    $(document).ready(function(){
+        //设置定时器刷新
+        setInterval(function () {
+            $("#fileTable").bootstrapTable("refresh");
+        },5000);
+        //bootstrapTable 绑定数据
+        $("#fileTable").bootstrapTable({
+            url:"fileList",
+            method: "get",
+            pagination:true,
+            smartDisplay:true,
+            refresh:true,
+            search:true,
+            columns:[{
+                field:"id",
+                title:"id"
+            },{
+                field:"fileName",
+                title:"fileName"
+            },{
+                field:"filePath",
+                title:"filePath"
+            },{
+                field:"fileSize",
+                title:"fileSize"
+            },{
+                field:"uploadTime",
+                title:"uploadTime"
+            }]
+        });
+    });
+
+    // $(document).ready(function(){
+    //     var grid =$("#grid-data").bootgrid({
+    //         ajax:true,
+    //         ajaxSettings: {
+    //             method: "GET",
+    //         },
+    //         url:"fileList",
+    //         formatters:{
+    //             "id":function (column,row) {
+    //                 return row.type.id;
+    //             },
+    //             "fileName":function (column,row) {
+    //                 return row.type.fileName;
+    //             },
+    //             "filePath":function (column,row) {
+    //                 return row.type.filePath;
+    //             },
+    //             "fileSize":function (column,row) {
+    //                 return row.type.fileSize;
+    //             },
+    //             "uploadTime":function (column,row) {
+    //                 return row.type.uploadTime;
+    //             }
+    //         },
+    //         responseHandler:function (response) {
+    //             if(response.isSuccess){
+    //                 window.location="file.html";
+    //             }
+    //         }
+    //     });
+    // });
+</script>
+</body>
+</html>

@@ -19,7 +19,6 @@ public class Country {
 	public void setCountry(String country) {
 		this.country = country;
 	}
-	
 	public String getLast_update() {
 		return last_update;
 	}

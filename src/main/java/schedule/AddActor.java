@@ -14,7 +14,7 @@ public class AddActor {
 	
 	@Scheduled(cron="0 0/3 * * * ?") 
 	void runTask() {
-		System.out.println("开始自动调度添加演员");
+		System.out.println("开始自动调度");
 		// 调用业务逻辑方法
 		Actor a = new Actor();
 		a.setFirst_name("AUTO");

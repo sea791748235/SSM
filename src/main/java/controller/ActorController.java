@@ -24,6 +24,8 @@ import pagemodel.ActorGrid;
 import pagemodel.MSG;
 import po.Actor;
 import service.ActorService;
+import web.DataSourceHolder;
+import web.DynamicDataSource;
 
 @Api(tags = "演员接口")
 @Controller
@@ -37,6 +39,7 @@ public class ActorController {
 	@RequestMapping(value="/actors",method = RequestMethod.GET,produces = {"application/json;charset=UTF-8"})
 	@ResponseBody
 	public ActorGrid listActors(@RequestParam("current") int current,@RequestParam("rowCount") int rowCount){
+		DataSourceHolder.setDataSources("ds_mysql");
 		log.info("aaa");
 		log.error("bbb");
 		int total=actorservice.getactornum();
@@ -53,6 +56,7 @@ public class ActorController {
 	@RequestMapping(value="/listActorsXml",produces = {"application/xml;charset=UTF-8"},method = RequestMethod.GET)
 	@ResponseBody
 	public ActorGrid listActorsXml(@RequestParam("current") int current,@RequestParam("rowCount") int rowCount){
+		DataSourceHolder.setDataSources("ds_mysql");
 		int total=actorservice.getactornum();
 		List<Actor> list=actorservice.getpageActors(current,rowCount);
 		ActorGrid grid=new ActorGrid();
@@ -73,6 +77,7 @@ public class ActorController {
 	@RequestMapping(value="/actors/{id}",method = RequestMethod.PUT,consumes="application/json")
 	@ResponseBody
 	public Actor updateactor(@PathVariable("id") short id, @RequestBody Actor a){
+		DataSourceHolder.setDataSources("ds_mysql");
 		Actor actor=actorservice.updateactor(a);
 		return actor;
 	}
@@ -81,6 +86,7 @@ public class ActorController {
 	@RequestMapping(value="/actors/{id}",method = RequestMethod.GET)
 	@ResponseBody
 	public MSG getactorbyid(@PathVariable("id") short id){
+		DataSourceHolder.setDataSources("ds_mysql");
 		Actor a=actorservice.getActorByid(id);
 		return new MSG("200",a);
 	}
@@ -89,6 +95,7 @@ public class ActorController {
 	@RequestMapping(value="/actors",method = RequestMethod.POST)
 	@ResponseBody
 	public Actor add(@RequestBody Actor a){
+		DataSourceHolder.setDataSources("ds_mysql");
 		Actor actor=actorservice.addactor(a);
 		return actor;
 	}
@@ -96,6 +103,7 @@ public class ActorController {
 	@ApiOperation("删除一个演员")
 	@RequestMapping(value="/actors/{id}",method = RequestMethod.DELETE)
 	public String delete(@PathVariable("id") short id){
+		DataSourceHolder.setDataSources("ds_mysql");
 		actorservice.delete(id);
 		return "/html/showactor.html";
 	}
@@ -103,6 +111,7 @@ public class ActorController {
 	@ApiOperation("把演员导出为Excel")
 	@RequestMapping(value="/exportactor",method = RequestMethod.GET)
 	public void export(HttpServletResponse response) throws Exception{
+		DataSourceHolder.setDataSources("ds_mysql");
 		InputStream is=actorservice.getInputStream();
 		response.setContentType("application/vnd.ms-excel");
 		response.setHeader("contentDisposition", "attachment;filename=AllUsers.xls");

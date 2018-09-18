@@ -6,6 +6,7 @@ public class City {
 	private String city;
 	private String last_update;
 	private Country country;
+
 	public short getCity_id() {
 		return city_id;
 	}
@@ -30,6 +31,4 @@ public class City {
 	public void setLast_update(String last_update) {
 		this.last_update = last_update;
 	}
-	
-	
 }

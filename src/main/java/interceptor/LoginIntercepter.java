@@ -23,12 +23,12 @@ public class LoginIntercepter extends HandlerInterceptorAdapter{
     @Override    
     public boolean preHandle(HttpServletRequest request,    
             HttpServletResponse response, Object handler) throws Exception {    
-        String username =  (String)request.getSession().getAttribute("username");   
-        if(username == null){  
-            request.getRequestDispatcher("/SSM/login").forward(request, response);  
-            return false;  
-        }else  
-            return true;     
+//        String username =  (String)request.getSession().getAttribute("username");
+//        if(username == null){
+//            request.getRequestDispatcher("/SSM/login").forward(request, response);
+//            return false;
+//        }else
+            return true;
     }    
     
     /** 

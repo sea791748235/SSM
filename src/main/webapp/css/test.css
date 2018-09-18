@@ -1,0 +1,19 @@
+body{
+    color:#ffff00;
+}
+
+#div{
+    width:150px;
+    height:150px;
+    margin:0 auto;
+    padding:10px;
+    background:black;
+    border:10px solid #000;
+    cursor:crosshair;
+}
+
+#div.hover{
+    color:red;
+    background:#f0f0f0;
+    border:10px solid red;
+}

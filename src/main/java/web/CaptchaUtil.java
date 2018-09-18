@@ -87,7 +87,6 @@ public class CaptchaUtil {
         {
             g.drawRect(random.nextInt(width), random.nextInt(height), 1, 1);
         }
-       
         try {
             ServletOutputStream out = response.getOutputStream();
             ImageIO.write((RenderedImage) bi, "jpeg", out);

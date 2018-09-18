@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mapper.T_progressMapper" >
+  <resultMap id="BaseResultMap" type="po.T_progress" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="progress" property="progress" jdbcType="VARCHAR" />
+    <result column="createtime" property="createtime" jdbcType="VARCHAR" />
+    <result column="custid" property="custid" jdbcType="INTEGER" />
+    <result column="userid" property="userid" jdbcType="INTEGER" />
+    <result column="mark" property="mark" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_progress
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="po.T_progress" >
+    insert into t_progress (id, progress, createtime, 
+      custid, userid, mark
+      )
+    values (#{id,jdbcType=INTEGER}, #{progress,jdbcType=VARCHAR}, #{createtime,jdbcType=VARCHAR}, 
+      #{custid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{mark,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="po.T_progress" >
+    update t_progress
+    set progress = #{progress,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=VARCHAR},
+      custid = #{custid,jdbcType=INTEGER},
+      userid = #{userid,jdbcType=INTEGER},
+      mark = #{mark,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select id, progress, createtime, custid, userid, mark
+    from t_progress
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, progress, createtime, custid, userid, mark
+    from t_progress
+  </select>
+</mapper>

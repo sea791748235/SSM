@@ -39,7 +39,7 @@ public class FileUpload {
 			String username = (String) request.getSession().getAttribute("username");
 			String realfilename = username + nowTimeStamp + "." + StringUtils.getFilenameExtension(filename);
 			String targetDir = request.getSession().getServletContext().getRealPath("uploadfiles");
-			File targetfile = new File(targetDir, realfilename);
+			File targetfile = new File(targetDir, filename);
 			uploadfile.transferTo(targetfile);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -66,7 +66,7 @@ public class FileUpload {
 					String realfilename = username + String.valueOf(i) + nowTimeStamp + "."
 							+ StringUtils.getFilenameExtension(filename);
 					String targetDir = request.getSession().getServletContext().getRealPath("uploadfiles");
-					File targetfile = new File(targetDir, realfilename);
+					File targetfile = new File(targetDir, filename);
 					file.transferTo(targetfile);
 				}
 			}

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <script src="./js/jquery-1.12.3.min.js"></script>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/jquery.bootgrid.min.css">
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/jquery.bootgrid.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.js"></script>
+
+    <!-- Latest compiled and minified Locales -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/locale/bootstrap-table-zh-CN.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div>
+        <label id="label">aaa</label>
+        <input id="input" placeholder="input here!"/>
+        <button class="btn" id="btn">changer</button>
+    </div>
+
+    <div>
+        <table id="b_table"></table>
+    </div>
+    <div>
+        <table id="actor_table"></table>
+    </div>
+
+    <div id="div" class="">mouseOn and mouseOut
+
+
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+
+        window.onload=function () {
+            var oDiv=document.getElementById("div");
+            oDiv.onmouseover=function (ev) {
+                oDiv.className="hover";
+            };
+            oDiv.onmouseout=function () {
+                oDiv.className="";
+            }
+        }
+
+        $("#btn").click(function () {
+            var json={
+                "input":$("#input").val()
+            };
+            $.ajax({
+                url:"testList",
+                type:"GET",
+                data:json,
+                dataType:"json",
+                contentType:"application/json;charset=UTF-8",
+                success:function (data) {
+                    $("#label").html(data[1].b+"%%%%%%%%%");
+                    alert(data[1].b);
+                },
+                error:function (data) {
+                    alert(data);
+                }
+            });
+        });
+
+        $("#b_table").bootstrapTable({
+            url:"testList",
+            columns: [{
+                field: "a",
+                title:"a"
+            },{
+                field:"b",
+                title:"b"
+            }]
+            // data:[{
+            //     id:111,
+            //     name:"aaa"
+            // },{
+            //     id:222,
+            //     name:"bbb"
+            // }]
+        });
+
+        $("#actor_table").bootstrapTable({
+            url:"testAllActors",
+            method:"post",
+            pagination:true,
+            columns:[{
+                field:"id",
+                title:"id"
+            },{
+                field:"first_name",
+                title:"first_name"
+            },{
+                field:"last_name",
+                title:"last_name"
+            },{
+                field:"last_update",
+                title:"last_update"
+            }]
+        })
+    })
+</script>
+
+</body>
+</html>

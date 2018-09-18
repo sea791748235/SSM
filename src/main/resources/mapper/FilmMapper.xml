@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.FilmMapper">
+	<resultMap type="po.Film" id="filmMap">
+		<result column="fid" property="fid"/>
+		<result column="title" property="title"/>
+		<result column="description" property="description"/>
+		<result column="category" property="category"/>
+		<result column="price" property="price"/>
+		<result column="length" property="length"/>
+		<result column="rating" property="rating"/>
+		<result column="actors" property="actors"/>
+    </resultMap>
+    
+	<select id="getAllFilm" resultMap="filmMap">
+		select * from film_list
+	</select>
+
+</mapper>

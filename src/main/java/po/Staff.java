@@ -11,7 +11,6 @@ public class Staff {
 	private String password;
 	private String last_update;
 	
-	
 	public String getLast_update() {
 		return last_update;
 	}

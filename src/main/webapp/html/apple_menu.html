@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+</head>
+<body>
+<div id="div_apple_menu" style="position: absolute;width: 100%;bottom:0;text-align:center;">
+    <img src="/img/112.jpg" width="64">
+    <img src="/img/113.jpg" width="64">
+    <img src="/img/114.jpg" width="64">
+    <img src="/img/115.jpg" width="64">
+</div>
+
+<script>
+    $(document).ready(function () {
+
+        window.onload=function () {
+            var oMenu=document.getElementById("div_apple_menu");
+            var aImg = oMenu.getElementsByTagName("img");
+            var aWidth = [];
+            var i=0;
+            for(i=0;i<aImg.length;i++){
+                aWidth.push(aImg[i].offsetWidth);
+                aImg[i].width=parseInt(aImg[i].offsetWidth/2);
+            }
+
+            document.onmousemove=function (event) {
+                var event=event||window.event;
+                for(i=0;i<aImg.length;i++){
+                    var a=ev.clientX-aImg[i].offsetLeft-aImg[i].offsetWidth/2;
+                    var b=ev.clientY-aImg[i].offsetTop-oMenu.offsetTop-aImg[i].offsetHeight/2;
+                    var iScale=1-Math.sqrt(a*a+b*b)/300;
+                    if(iScale<0.5){
+                        iScale=0.5;
+                    }
+                    aImg[i].width=aWidth[i]*iScale
+                }
+            }
+        };
+    })
+</script>
+</body>
+</html>

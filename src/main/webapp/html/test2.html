@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <script src="./js/jquery-1.12.3.min.js"></script>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/jquery.bootgrid.min.css">
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/jquery.bootgrid.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.js"></script>
+
+    <!-- Latest compiled and minified Locales -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/locale/bootstrap-table-zh-CN.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <!--<div>-->
+        <!--<label id="label">aaa</label>-->
+        <!--<input id="input" placeholder="input here!"/>-->
+        <!--<button class="btn" id="btn">changer</button>-->
+    <!--</div>-->
+    <!--<div>-->
+        <!--<table id="pono_table"></table>-->
+    <!--</div>-->
+
+
+    <div class="divider"/>
+
+
+</div>
+
+<script>
+    $(document).ready(function () {
+        
+        window.onload=function () {
+            var oMenu=document.getElementById("div_apple_menu");
+            var aImg = oMenu.getElementsByTagName("img");
+            var aWidth = [];
+            var i=0;
+            for(i=0;i<aImg.length;i++){
+                aWidth.push(aImg[i].offsetWidth);
+                aImg[i].width=parseInt(aImg[i].offsetWidth/2);
+            }
+
+            document.onmousemove=function (event) {
+                var event=event||window.event;
+                for(i=0;i<aImg.length;i++){
+                    var a=ev.clientX-aImg[i].offsetLeft-aImg[i].offsetWidth/2;
+                    var b=ev.clientY-aImg[i].offsetTop-oMenu.offsetTop-aImg[i].offsetHeight/2;
+                    var iScale=1-Math.sqrt(a*a+b*b)/300;
+                    if(iScale<0.5){
+                        iScale=0.5;
+                    }
+                    aImg[i].width=aWidth[i]*iScale
+                }
+            }
+
+        }
+        
+        $("#btn").click(function () {
+
+            var json ={
+                "input":$("#input").val
+            };
+
+            $.ajax({
+                url:"testList",
+                data:json,
+                type:"GET",
+                dataType:"json",
+                contentType:"application/json,charset=UTF-8",
+                success:function (data) {
+                    alert(data);
+                },
+                error:function (data) {
+                    alert(data);
+                }
+            })
+
+
+        });
+
+        $("#pono_table").bootstrapTable({
+            url:"filmList",
+            method:"post",
+            pagination:true,
+            striped:true,
+            sortStable:true,
+            iconsPrefix:"glyphicon",
+            smartDisplay:true,
+            search:true,
+            trimOnSearch:true,
+            //showFooter:true,
+            showColumns:true,
+            showRefresh:true,
+            showToggle:true,
+            showFullscreen:true,
+            searchOnEnterKey:true,
+            columns:[{
+                field:"fid",
+                title:"fid"
+            },{
+                field:"title",
+                title:"title"
+            },{
+                field:"description",
+                title:"description"
+            },{
+                field:"category",
+                title:"category"
+            },{
+                field:"price",
+                title:"price"
+            },{
+                field:"length",
+                title:"length"
+            },{
+                field:"rating",
+                title:"rating"
+            },{
+                field:"actors",
+                title:"actors"
+            }]
+        })
+    })
+</script>
+</body>
+</html>
